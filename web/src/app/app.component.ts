@@ -6,5 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'web';
+  title = 'MoodyBeats';
+  clickDefault = 'Weather information:'
+  clickMessage = ''
+
+  onClickMe() {
+    this.clickMessage = this.clickDefault + 'button clicked!';
+  }
 }
