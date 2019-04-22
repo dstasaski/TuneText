@@ -11,6 +11,12 @@
     <button (click)="onClickMe()">Get current weather</button>
       {{clickMessage}}
   </li>
+  <li>
+      <button (click)="onClickPlaylist()">Get a playlist</button>
+        {{playlistMessage}}
+    </li>
 </ul>
+<app-tunetext></app-tunetext>
+
 
 <router-outlet></router-outlet>

@@ -1,0 +1,6 @@
+<h1>Tune your Text!</h1>
+<input #usertext
+  (keyup.enter)="onSubmit(usertext.value)"
+  (blur)="onSubmit(usertext.value)">
+<button (click)="onSubmit(usertext.value)">Submit</button>
+{{userText}}

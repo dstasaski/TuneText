@@ -11,7 +11,7 @@ export class AppComponent {
   title = 'MoodyBeats';
   clickDefault = 'Weather information: ';
   clickMessage = '';
-
+  playlistMessage = '';
 
   constructor(private apiService: ApiService) { }
 
@@ -20,4 +20,10 @@ export class AppComponent {
       this.clickMessage = this.clickDefault + data.description;
     });
   }
+
+  onClickPlaylist() {
+    this.apiService.getPlaylist("party").subscribe(data => {
+      this.playlistMessage = data.playlists.items[0].id;
+    });
+  }  
 }
