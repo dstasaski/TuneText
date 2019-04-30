@@ -1,4 +1,11 @@
-.mytext {
-    width: 300px;
-    height: 100px;
+.inserttext {
+    width: 400px;
+    height: 200px;
+}
+
+.submitbutton {
+    display:block;
+    margin: 0 auto;
+    width: 100px;
+    height: 40px;
 }

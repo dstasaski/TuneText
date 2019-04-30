@@ -1,4 +1,9 @@
 <h1>Tune your Text!</h1>
-<textarea placeholder= "Enter your text here" #usertext class="mytext"></textarea>
-<button (click)="onSubmit(usertext.value)">Submit</button>
-{{userText}}
+<div>
+  <textarea placeholder= "Enter your text here" #usertext class="inserttext"></textarea>
+  <!-- <textarea class="inserttext" class="textresult" class="inserttext">{{userText}}</textarea> -->
+</div>
+<div style="text-align:center">
+  <button (click)="onSubmit(usertext.value)" class="submitbutton">Submit</button>
+</div>
+
