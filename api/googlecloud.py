@@ -9,7 +9,7 @@ class GoogleAPI:
 
     @staticmethod
     def cloud_token():
-        with open('cloud.txt') as f:
+        with open('config/cloud.txt') as f:
             return f.readline().strip()
 
     def text_to_speech(self, text):

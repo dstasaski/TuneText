@@ -11,7 +11,7 @@ class Spotify:
 
     @staticmethod
     def read_secrets():
-        with open('secret.txt') as f:
+        with open('config/secret.txt') as f:
             return f.readline().strip().split(':')
 
     def get_token(self):
