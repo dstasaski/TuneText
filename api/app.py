@@ -10,6 +10,7 @@ CORS(app)
 spotify = Spotify()
 googleAPI = GoogleAPI()
 
+TEXT_LIMIT = 1000
 
 @app.route('/api/weather')
 def weather():
@@ -26,7 +27,11 @@ def music_category(category):
 
 @app.route('/api/text_to_speech/<text>')
 def speech_mp3(text):
-    return jsonify(googleAPI.text_to_speech(text))
+    if len(text) > TEXT_LIMIT:
+        error = {'errorMessage': 'Too many characters'}
+        return jsonify(error)
+    else:
+        return jsonify(googleAPI.text_to_speech(text))
 
 
 if __name__ == '__main__':
