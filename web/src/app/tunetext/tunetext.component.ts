@@ -14,13 +14,22 @@ export class TunetextComponent implements OnInit {
   }
 
   onSubmit(input:string) {
+    this.playSong();
+
     this.apiService.getTextMP3(input).subscribe(data => {
-      this.playAudio(data.audioContent);
+      this.playText(data.audioContent);
     });
   }
 
-  playAudio(encodedAudio:string) {
+  playText(encodedAudio:string) {
     var audio = new Audio("data:audio/mp3;base64," + encodedAudio);
+    audio.play();
+  }
+
+  playSong() {
+    var audio = new Audio("http://localhost:5000/api/music/song");
+    // audio.load();
+    audio.volume = 0.25;
     audio.play();
   }
 }

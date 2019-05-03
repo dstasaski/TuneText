@@ -3,12 +3,14 @@ from flask import jsonify
 from flask_cors import CORS
 from spotify import Spotify
 from googlecloud import GoogleAPI
+from analyze import Analyzer
 
 app = Flask(__name__)
 CORS(app)
 
 spotify = Spotify()
 googleAPI = GoogleAPI()
+analyzer = Analyzer()
 
 TEXT_LIMIT = 1000
 
@@ -32,6 +34,11 @@ def speech_mp3(text):
         return jsonify(error)
     else:
         return jsonify(googleAPI.text_to_speech(text))
+
+
+@app.route('/api/music/song')
+def song():
+    return analyzer.song()
 
 
 if __name__ == '__main__':

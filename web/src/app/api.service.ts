@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { WeatherResponse } from '../models/weatherresponse';
-import { SpotifyPlaylist } from '../models/spotify';
+import { WeatherResponse } from 'src/models/weatherresponse';
+import { SpotifyPlaylist } from 'src/models/spotify';
 import { Observable } from 'rxjs';
 import { Base64MP3 } from 'src/models/mp3';
+import { SongEncoding } from 'src/models/songencoding';
 
 
 
@@ -11,10 +12,12 @@ import { Base64MP3 } from 'src/models/mp3';
   providedIn: 'root'
 })
 export class ApiService {
-  weatherUrl = 'http://localhost:5000/api/weather'
-  playlistUrl = 'http://localhost:5000/api/music/browse/categories/'
-  textSpeechUrl = 'http://localhost:5000/api/text_to_speech/'
-
+  base = 'http://localhost:5000'
+  weatherUrl = this.base + '/api/weather'
+  playlistUrl = this.base + '/api/music/browse/categories/'
+  textSpeechUrl = this.base + '/api/text_to_speech/'
+  songUrl = this.base + '/api/music/song'
+  
   constructor(private http: HttpClient) { }
 
   getWeather():Observable<WeatherResponse> {
@@ -27,5 +30,9 @@ export class ApiService {
 
   getTextMP3(text:string):Observable<Base64MP3> {
     return this.http.get<Base64MP3>(this.textSpeechUrl + text);
+  }
+
+  getSongEncoding():Observable<SongEncoding> {
+    return this.http.get<SongEncoding>(this.songUrl)
   }
 }
