@@ -1,3 +1,5 @@
-.container {
-    background-color: lightblue;
+.container-fluid {
+    background-color: #EDEDED;
+    margin: 0;
+    padding: 0;
 }

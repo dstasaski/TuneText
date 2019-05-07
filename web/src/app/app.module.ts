@@ -6,11 +6,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ApiService } from './api.service';
 import { TunetextComponent } from './tunetext/tunetext.component';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TunetextComponent
+    TunetextComponent,
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
