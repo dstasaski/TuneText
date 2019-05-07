@@ -8,7 +8,7 @@ import { ApiService } from './api.service';
   providers: [ApiService]
 })
 export class AppComponent {
-  title = 'MoodyBeats';
+  title = 'Tune your Text!';
   clickDefault = 'Weather information: ';
   clickMessage = '';
   playlistMessage = '';

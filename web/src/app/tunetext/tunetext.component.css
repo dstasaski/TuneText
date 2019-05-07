@@ -1,5 +1,4 @@
 .inserttext {
-    width: 400px;
     height: 200px;
 }
 
@@ -8,4 +7,12 @@
     margin: 0 auto;
     width: 100px;
     height: 40px;
+}
+
+.submitbutton:hover {
+    background-color: lightgray
+}
+
+.submitbutton:active {
+    background-color: lightgray
 }
