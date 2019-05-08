@@ -1,18 +1,3 @@
 .inserttext {
-    height: 200px;
-}
-
-.submitbutton {
-    display:block;
-    margin: 0 auto;
-    width: 100px;
-    height: 40px;
-}
-
-.submitbutton:hover {
-    background-color: lightgray
-}
-
-.submitbutton:active {
-    background-color: lightgray
+    min-height: 200px;
 }

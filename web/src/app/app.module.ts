@@ -8,13 +8,15 @@ import { ApiService } from './api.service';
 import { TunetextComponent } from './tunetext/tunetext.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
+import { WelcomeComponent } from './welcome/welcome.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TunetextComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    WelcomeComponent
   ],
   imports: [
     BrowserModule,
