@@ -9,6 +9,7 @@ import { TunetextComponent } from './tunetext/tunetext.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { WelcomeComponent } from './welcome/welcome.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { WelcomeComponent } from './welcome/welcome.component';
     TunetextComponent,
     HeaderComponent,
     FooterComponent,
-    WelcomeComponent
+    WelcomeComponent,
+    SidebarComponent
   ],
   imports: [
     BrowserModule,
