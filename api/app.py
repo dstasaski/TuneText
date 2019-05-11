@@ -29,7 +29,10 @@ def music_category(category):
 
 @app.route('/api/text_to_speech/<text>')
 def speech_mp3(text):
-    if len(text) > 0 and len(text) > TEXT_LIMIT:
+    if len(text) <= 0:
+        error = {'errorMessage': 'There is no text'}
+        return jsonify(error)
+    elif len(text) > TEXT_LIMIT:
         error = {'errorMessage': 'Too many characters'}
         return jsonify(error)
     else:
@@ -39,6 +42,11 @@ def speech_mp3(text):
 @app.route('/api/music/song')
 def song():
     return analyzer.song()
+
+
+@app.route('/api/music/smartsong/<text>')
+def smart_song(text):
+    return analyzer.match_song(text)
 
 
 if __name__ == '__main__':
