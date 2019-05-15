@@ -30,27 +30,11 @@ test_set = sentim_analyzer.apply_features(testing_docs)
 trainer = NaiveBayesClassifier.train
 
 classifier = sentim_analyzer.train(trainer, training_set)
-for key,value in sorted(sentim_analyzer.evaluate(test_set).items()):
+
+for key, value in sorted(sentim_analyzer.evaluate(test_set).items()):
     print('{0}: {1}'.format(key, value))
 
 
-
-
-'''
-
-# tokenize, remove special char, remove stopwords
-# classify emotion
-# train with bag of words or lexicon
-# apply supervised algorithm
-# calculate accuracy
-
-save_classifier = open("naivebayes.pickle","wb")
-pickle.dump(classifier, save_classifier)
+save_classifier = open("../api/models/naivebayes.pickle","wb")
+pickle.dump(sentim_analyzer, save_classifier)
 save_classifier.close()
-
-
-classifier_f = open("naivebayes.pickle", "rb")
-classifier = pickle.load(classifier_f)
-classifier_f.close()
-
-'''

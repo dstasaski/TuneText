@@ -46,7 +46,7 @@ def song():
 
 @app.route('/api/music/smartsong/<text>')
 def smart_song(text):
-    return analyzer.match_song(text)
+    return jsonify(analyzer.smart_song(text))
 
 
 if __name__ == '__main__':
