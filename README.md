@@ -9,3 +9,7 @@ To connect to Spotify API, create a file in `api` directory called  `secret.txt`
 Start the website easily on your local machine with `docker-compose up`
 
 The website can be viewed at `localhost:4200`
+
+## Credits
+Emotion text labeled dataset from CrowdFlower.com
+
