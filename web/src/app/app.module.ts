@@ -10,6 +10,11 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { PlayerComponent } from './player/player.component';
+import { HometextComponent } from './hometext/hometext.component';
+import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
+import { AboutComponent } from './about/about.component';
+import { DonateComponent } from './donate/donate.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +23,12 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     HeaderComponent,
     FooterComponent,
     WelcomeComponent,
-    SidebarComponent
+    SidebarComponent,
+    PlayerComponent,
+    HometextComponent,
+    PagenotfoundComponent,
+    AboutComponent,
+    DonateComponent
   ],
   imports: [
     BrowserModule,
