@@ -14,6 +14,7 @@ analyzer = Analyzer()
 
 TEXT_LIMIT = 1000
 
+
 @app.route('/api/weather')
 def weather():
     data = {
@@ -39,9 +40,13 @@ def speech_mp3(text):
         return jsonify(googleAPI.text_to_speech(text))
 
 
-@app.route('/api/music/song')
-def song():
-    return analyzer.song()
+@app.route('/api/music/song/<songID>')
+def song(songID):
+    song = analyzer.song(songID)
+    if song is not None:
+        return analyzer.song(songID)
+    else:
+        return jsonify({'error': 'bad song path'})
 
 
 @app.route('/api/music/smartsong/<text>')

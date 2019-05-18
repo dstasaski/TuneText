@@ -17,10 +17,14 @@ export class ApiService {
   weatherUrl = this.base + '/api/weather';
   playlistUrl = this.base + '/api/music/browse/categories/';
   textSpeechUrl = this.base + '/api/text_to_speech/';
-  songUrl = this.base + '/api/music/song';
+  songUrl = this.base + '/api/music/song/';
   textSongUrl = this.base + '/api/music/smartsong/';
   
   constructor(private http: HttpClient) { }
+
+  getSongUrl(songID:string):string {
+    return this.songUrl + songID;
+  }
 
   getWeather():Observable<WeatherResponse> {
     return this.http.get<WeatherResponse>(this.weatherUrl);

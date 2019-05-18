@@ -32,7 +32,7 @@ export class TunetextComponent implements OnInit {
   }
 
   playSong(songID:string) {
-    var audio = new Audio("http://localhost:5000/api/music/song");
+    var audio = new Audio(this.apiService.getSongUrl(songID));
     // audio.load();
     audio.volume = 0.25;
     audio.play();
