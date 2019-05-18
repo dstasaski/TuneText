@@ -8,13 +8,18 @@ import { ApiService } from '../api.service';
   providers: [ApiService]
 })
 export class TunetextComponent implements OnInit {
+  sentiment = '';
+
   constructor(private apiService: ApiService) { }
 
   ngOnInit() {
   }
 
   onSubmit(input:string) {
-    this.playSong();
+    this.apiService.getTextSong(input).subscribe(data => {
+      this.sentiment = data.sentiment;
+      this.playSong(data.songID);
+    });
 
     this.apiService.getTextMP3(input).subscribe(data => {
       this.playText(data.audioContent);
@@ -26,7 +31,7 @@ export class TunetextComponent implements OnInit {
     audio.play();
   }
 
-  playSong() {
+  playSong(songID:string) {
     var audio = new Audio("http://localhost:5000/api/music/song");
     // audio.load();
     audio.volume = 0.25;

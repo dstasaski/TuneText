@@ -5,6 +5,7 @@ import { SpotifyPlaylist } from 'src/models/spotify';
 import { Observable } from 'rxjs';
 import { Base64MP3 } from 'src/models/mp3';
 import { SongEncoding } from 'src/models/songencoding';
+import { TextSong } from 'src/models/textsong';
 
 
 
@@ -12,11 +13,12 @@ import { SongEncoding } from 'src/models/songencoding';
   providedIn: 'root'
 })
 export class ApiService {
-  base = 'http://localhost:5000'
-  weatherUrl = this.base + '/api/weather'
-  playlistUrl = this.base + '/api/music/browse/categories/'
-  textSpeechUrl = this.base + '/api/text_to_speech/'
-  songUrl = this.base + '/api/music/song'
+  base = 'http://localhost:5000';
+  weatherUrl = this.base + '/api/weather';
+  playlistUrl = this.base + '/api/music/browse/categories/';
+  textSpeechUrl = this.base + '/api/text_to_speech/';
+  songUrl = this.base + '/api/music/song';
+  textSongUrl = this.base + '/api/music/smartsong/';
   
   constructor(private http: HttpClient) { }
 
@@ -34,5 +36,9 @@ export class ApiService {
 
   getSongEncoding():Observable<SongEncoding> {
     return this.http.get<SongEncoding>(this.songUrl)
+  }
+
+  getTextSong(text:string):Observable<TextSong> {
+    return this.http.get<TextSong>(this.textSongUrl + text);
   }
 }
