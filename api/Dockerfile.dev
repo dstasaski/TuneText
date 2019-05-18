@@ -3,6 +3,7 @@ RUN mkdir -p /app
 WORKDIR /app
 COPY requirements.txt .
 RUN pip install -r requirements.txt
+COPY assets/nltk_data /root/nltk_data
 COPY . .
 ENTRYPOINT [ "python" ]
 CMD [ "app.py" ]
