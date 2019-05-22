@@ -1,40 +1,24 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from '../api.service';
+import { PlayService } from '../play.service';
+import { Router } from '@angular/router';
+import { PlayresolverService } from '../playresolver.service';
 
 @Component({
   selector: 'app-tunetext',
   templateUrl: './tunetext.component.html',
   styleUrls: ['./tunetext.component.css'],
-  providers: [ApiService]
+  providers: [PlayService]
 })
 export class TunetextComponent implements OnInit {
-  sentiment = '';
-
-  constructor(private apiService: ApiService) { }
+  constructor(private playService: PlayService,
+    private playResolver: PlayresolverService,
+    private router: Router) { }
 
   ngOnInit() {
   }
 
   onSubmit(input:string) {
-    this.apiService.getTextSong(input).subscribe(data => {
-      this.sentiment = data.sentiment;
-      this.playSong(data.songID);
-    });
-
-    this.apiService.getTextMP3(input).subscribe(data => {
-      this.playText(data.audioContent);
-    });
-  }
-
-  playText(encodedAudio:string) {
-    var audio = new Audio("data:audio/mp3;base64," + encodedAudio);
-    audio.play();
-  }
-
-  playSong(songID:string) {
-    var audio = new Audio(this.apiService.getSongUrl(songID));
-    // audio.load();
-    audio.volume = 0.25;
-    audio.play();
+    this.playResolver.text = input;
+    this.router.navigate(['player'])
   }
 }
