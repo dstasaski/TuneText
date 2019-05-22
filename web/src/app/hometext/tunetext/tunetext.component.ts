@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { PlayService } from '../play.service';
+import { PlayService } from '../../play.service';
 import { Router } from '@angular/router';
-import { PlayresolverService } from '../playresolver.service';
+import { PlayresolverService } from '../../playresolver.service';
 
 @Component({
   selector: 'app-tunetext',
