@@ -13,7 +13,6 @@ export class PlayerComponent implements OnInit {
   constructor(private playService:PlayService,
     private route: ActivatedRoute) { }
   
-
   ngOnInit() {
     this.route.snapshot.data.playResolver;
     this.sentiment = this.playService.sentiment;
