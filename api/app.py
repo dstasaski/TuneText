@@ -51,7 +51,14 @@ def song(songID):
 
 @app.route('/api/music/smartsong/<text>')
 def smart_song(text):
-    return jsonify(analyzer.smart_song(text))
+    if len(text) <= 0:
+        error = {'errorMessage': 'There is no text'}
+        return jsonify(error)
+    elif len(text) > TEXT_LIMIT:
+        error = {'errorMessage': 'Too many characters'}
+        return jsonify(error)
+    else:
+        return jsonify(analyzer.smart_song(text))
 
 
 if __name__ == '__main__':
