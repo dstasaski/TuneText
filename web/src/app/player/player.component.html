@@ -2,6 +2,7 @@
   <div *ngIf="playService?.sentiment != 0; then thenBlock else elseBlock"></div>
   <ng-template #thenBlock>
     <p>Your text has been classified as {{ playService?.sentiment }} </p>
+    <button (click)="pressButton()">{{ buttonText }}</button>
   </ng-template>
   <ng-template #elseBlock>
     <p>Loading...</p>

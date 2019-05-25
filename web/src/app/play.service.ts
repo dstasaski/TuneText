@@ -26,7 +26,7 @@ export class PlayService {
   saveSong(songID:string) {
     this.songID = songID;
     this.songAudio = new Audio(this.apiService.getSongUrl(songID));
-    this.songAudio.volume = 0.25;
+    this.songAudio.volume = 0.20;
     this.songAudio.load();
   }
 
@@ -35,11 +35,13 @@ export class PlayService {
     this.textAudio.load();
   }
 
-  playSong() {
+  playBoth() {
     this.songAudio.play();
+    this.textAudio.play();
   }
 
-  playText() {
-    this.textAudio.play();
+  pauseBoth() {
+    this.songAudio.pause();
+    this.textAudio.pause();
   }
 }
