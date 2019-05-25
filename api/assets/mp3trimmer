@@ -1,0 +1,6 @@
+#!/bin/bash
+for filename in /Users/Denny/tunetext/api/assets/songs/untrimmed/*.mp3; do
+	name=$(basename "$filename")
+	ffmpeg -t 30 -i "$filename" -acodec copy "/Users/Denny/tunetext/api/assets/songs/trimmed/$name" 
+done
+
