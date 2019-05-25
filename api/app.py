@@ -32,10 +32,10 @@ def music_category(category):
 def speech_mp3(text):
     if len(text) <= 0:
         error = {'errorMessage': 'There is no text'}
-        return jsonify(error)
+        return jsonify(error), 400
     elif len(text) > TEXT_LIMIT:
         error = {'errorMessage': 'Too many characters'}
-        return jsonify(error)
+        return jsonify(error), 400
     else:
         return jsonify(googleAPI.text_to_speech(text))
 
@@ -53,10 +53,10 @@ def song(songID):
 def smart_song(text):
     if len(text) <= 0:
         error = {'errorMessage': 'There is no text'}
-        return jsonify(error)
+        return jsonify(error), 400
     elif len(text) > TEXT_LIMIT:
         error = {'errorMessage': 'Too many characters'}
-        return jsonify(error)
+        return jsonify(error), 400
     else:
         return jsonify(analyzer.smart_song(text))
 
