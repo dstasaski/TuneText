@@ -21,4 +21,5 @@ services:
       - './api:/app'
     ports:
       - '5000:5000'
-
+    env_file:
+      - api.env

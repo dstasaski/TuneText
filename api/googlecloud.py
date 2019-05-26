@@ -1,16 +1,11 @@
 import requests
-
+import os
 
 class GoogleAPI:
     speech_url = 'https://texttospeech.googleapis.com/v1/text:synthesize?fields=audioContent&key={token}'
 
     def __init__(self):
-        self.API_TOKEN = self.cloud_token()
-
-    @staticmethod
-    def cloud_token():
-        with open('config/cloud.txt') as f:
-            return f.readline().strip()
+        self.API_TOKEN = os.environ['API_KEY']
 
     def text_to_speech(self, text):
         body = {
