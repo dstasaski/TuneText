@@ -1,31 +1,16 @@
 from flask import Flask
 from flask import jsonify
 from flask_cors import CORS
-from spotify import Spotify
 from googlecloud import GoogleAPI
 from analyze import Analyzer
 
 app = Flask(__name__)
 CORS(app)
 
-spotify = Spotify()
 googleAPI = GoogleAPI()
 analyzer = Analyzer()
 
 TEXT_LIMIT = 1000
-
-
-@app.route('/api/weather')
-def weather():
-    data = {
-        'description': 'Sunny, 100F (mock)'
-    }
-    return jsonify(data)
-
-
-@app.route('/api/music/browse/categories/<category>')
-def music_category(category):
-    return jsonify(spotify.browse_category(category))
 
 
 @app.route('/api/text_to_speech/<text>')
