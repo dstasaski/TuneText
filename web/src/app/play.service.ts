@@ -44,4 +44,12 @@ export class PlayService {
     this.songAudio.pause();
     this.textAudio.pause();
   }
+
+  destroyPlayer() {
+    this.pauseBoth();
+    this.sentiment = '';
+    this.songID = '';
+    this.textAudio = null;
+    this.songAudio = null;
+  }
 }

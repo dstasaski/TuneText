@@ -1,8 +1,15 @@
 <div class="text-center mx-auto w-50 m-3">
   <div *ngIf="playService?.sentiment != 0; then thenBlock else elseBlock"></div>
   <ng-template #thenBlock>
-    <p>Your text has been classified as <b>{{ playService?.sentiment }}</b> </p>
-    <button (click)="pressButton()">{{ buttonText }}</button>
+    <div>
+      <p>Your text has been classified as:<p>
+    </div>
+    <div>
+      <h5>{{ playService?.sentiment }}</h5>
+    </div>
+    <div>
+      <button (click)="pressButton()" class="btn btn-success btn-lg">{{ buttonText }}</button>
+    </div>
   </ng-template>
   <ng-template #elseBlock>
     <h3>Loading...</h3>

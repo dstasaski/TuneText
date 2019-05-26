@@ -17,6 +17,10 @@ export class PlayerComponent implements OnInit {
     this.route.snapshot.data.playResolver;
   }
 
+  ngOnDestroy() {
+    this.playService.destroyPlayer();
+  }
+
   pressButton() {
     if (this.buttonText === 'Play') {
       this.playService.playBoth();
