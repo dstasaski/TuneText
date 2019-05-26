@@ -37,7 +37,7 @@ export class PlayService {
 
   playBoth() {
     this.songAudio.play();
-    this.textAudio.play();
+    setTimeout( () => { this.textAudio.play(); }, 1000 );
   }
 
   pauseBoth() {
