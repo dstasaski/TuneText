@@ -41,8 +41,12 @@ export class PlayService {
   }
 
   pauseBoth() {
-    this.songAudio.pause();
-    this.textAudio.pause();
+    if (this.songAudio) {
+      this.songAudio.pause();
+    }
+    if (this.textAudio) {
+      this.textAudio.pause();
+    }
   }
 
   destroyPlayer() {

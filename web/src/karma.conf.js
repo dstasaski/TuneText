@@ -25,8 +25,20 @@ module.exports = function (config) {
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
-    browsers: ['Chrome'],
-    singleRun: false,
+    browsers: ['ChromiumNoSandbox'],
+    customLaunchers: {
+      ChromiumNoSandbox: {
+        base: 'ChromiumHeadless',
+        flags: [
+          '--no-sandbox',
+          '--headless',
+          '--disable-gpu',
+          '--disable-translate',
+          '--disable-extensions'
+        ]
+      }
+    },
+	singleRun: false,
     restartOnFileChange: true
   });
 };
