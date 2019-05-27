@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/dennystasaski/TuneText.svg?branch=master)](https://travis-ci.com/dennystasaski/TuneText)
+
 # TuneText
 Welcome to TuneText!  TuneText is a website to pair a song to a user's provided text.  Using machine learning NLTK models, text can be classified into an emotion.  The text will then be paired with a fitting song!
 
