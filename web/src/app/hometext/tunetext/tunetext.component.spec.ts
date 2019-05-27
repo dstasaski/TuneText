@@ -1,5 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { HttpClientModule } from '@angular/common/http';
+import { Routes, RouterModule } from '@angular/router';
 import { TunetextComponent } from './tunetext.component';
 
 describe('TunetextComponent', () => {
@@ -8,7 +9,8 @@ describe('TunetextComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TunetextComponent ]
+      declarations: [ TunetextComponent ],
+      imports: [HttpClientModule, RouterModule.forRoot([])]
     })
     .compileComponents();
   }));

@@ -1,6 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientModule } from '@angular/common/http';
 import { HometextComponent } from './hometext.component';
+import { WelcomeComponent } from './welcome/welcome.component';
+import { TunetextComponent } from './tunetext/tunetext.component';
 
 describe('HometextComponent', () => {
   let component: HometextComponent;
@@ -8,7 +11,15 @@ describe('HometextComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ HometextComponent ]
+      imports: [
+        HttpClientModule,
+        RouterTestingModule
+      ],
+      declarations: [ 
+        HometextComponent,
+        WelcomeComponent,
+        TunetextComponent
+      ]
     })
     .compileComponents();
   }));
