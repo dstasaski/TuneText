@@ -12,3 +12,4 @@ The website can be viewed at `localhost:4200`
 ## Credits
 Training dataset used from `CrowdFlower.com`.  The dataset consists of 40,000 tweets labeled with emotion.
 
+All songs are Copyright free and taken from `freepd.com`.
