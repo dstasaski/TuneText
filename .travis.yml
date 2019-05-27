@@ -4,6 +4,5 @@ services:
 before_install:
   - docker build -t dstasaski/angular-test -f ./web/Dockerfile.dev ./web
 script:
-  - docker run dstasaski/angular-test npm run test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
-  - docker run dstasaski/angular-test npm run e2e -- --protractor-config=e2e/protractor-ci.conf.js
+  - docker run dstasaski/angular-test npm run test -- --no-watch --no-progress --browsers=ChromiumNoSandbox 
 
