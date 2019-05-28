@@ -1,7 +1,14 @@
 version: '3'
 services:
-  frontend:
-    container_name: frontend
+  nginx:
+    restart: always
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./nginx
+    ports:
+      - '8080:80'
+  web:
+    container_name: web
     build:
       context: ./web
       dockerfile: Dockerfile.dev

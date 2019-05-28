@@ -11,10 +11,9 @@ import { TextSong } from 'src/models/textsong';
   providedIn: 'root'
 })
 export class ApiService {
-  base = 'http://localhost:5000';
-  textSpeechUrl = this.base + '/api/text_to_speech/';
-  songUrl = this.base + '/api/music/song/';
-  textSongUrl = this.base + '/api/music/smartsong/';
+  textSpeechUrl = '/api/text_to_speech/';
+  songUrl = '/api/music/song/';
+  textSongUrl = '/api/music/smartsong/';
   
   constructor(private http: HttpClient) { }
 

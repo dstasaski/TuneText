@@ -11,9 +11,11 @@ script:
 after_success:
   - docker build -t dstasaski/tunetext-web ./web
   - docker build -t dstasaski/tunetext-api ./api
+  - docker build -t dstasaski/tunetext-nginx ./nginx
   - echo $DOCKER_PASSWORD | docker login -u $DOCKER_ID --password-stdin
   - docker push dstasaski/tunetext-web
   - docker push dstasaski/tunetext-api
+  - docker push dstasaski/tunetext-nginx
 
 deploy:
   provider: elasticbeanstalk

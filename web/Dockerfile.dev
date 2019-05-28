@@ -15,5 +15,5 @@ RUN export LIGHTHOUSE_CHROMIUM_PATH=/usr/bin/chromium-browser
 
 COPY . /app
 
-CMD ng serve --host 0.0.0.0
+CMD ng serve --host 0.0.0.0 --disable-host-check=true
 

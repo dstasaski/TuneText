@@ -1,0 +1,45 @@
+{
+  "AWSEBDockerrunVersion": 2,
+  "containerDefinitions": [
+    {
+      "name": "web",
+      "image": "dstasaski/tunetext-web",
+      "hostname": "web",
+      "essential": false,
+      "portMappings": [
+        {
+          "hostPort": 4200,
+          "containerPort": 4200
+        }
+      ],
+      "memory": 128
+    },
+    {
+      "name": "api",
+      "image": "dstasaski/tunetext-api",
+      "hostname": "api",
+      "essential": false,
+      "portMappings": [
+        {
+          "hostPort": 5000,
+          "containerPort": 5000
+        }
+      ],
+      "memory": 128
+    },
+    {
+      "name": "nginx",
+      "image": "dstasaski/tunetext-nginx",
+      "hostname": "nginx",
+      "essential": true,
+      "portMappings": [
+        {
+          "hostPort": 80,
+          "containerPort": 80
+        }
+      ],
+      "links": ["web", "api"],
+      "memory": 128
+    }
+  ]
+}
