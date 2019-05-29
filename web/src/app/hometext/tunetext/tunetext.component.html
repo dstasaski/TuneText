@@ -1,6 +1,21 @@
+
 <div style="text-align:center" class="inserttext">
-  <textarea placeholder= "Enter your text here" #usertext class="w-75 h-100"></textarea>
+  <textarea placeholder= "Enter your text here" id="text" name="text" 
+    class="form-control h-100" required maxlength="1000" [(ngModel)]="usertext.text"
+    #text="ngModel">
+  </textarea>
 </div>
+
+<div *ngIf="text.invalid && (text.dirty || text.touched)"
+class="alert alert-danger">
+  <div *ngIf="text.errors.required">
+    Please enter your text.
+  </div>
+  <div *ngIf="text.errors.maxlength">
+    Text must not be longer than 1000 characters.
+  </div>
+</div>
+
 <div style="text-align:center">
-  <button (click)="onSubmit(usertext.value)" class="btn btn-success my-sm-3">Submit</button>
+  <button (click)="onSubmit(text.value)" [disabled]="text.invalid" class="btn btn-success my-sm-3">Submit</button>
 </div>

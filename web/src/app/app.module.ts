@@ -15,6 +15,7 @@ import { HometextComponent } from './hometext/hometext.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { AboutComponent } from './about/about.component';
 import { DonateComponent } from './donate/donate.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -35,6 +36,7 @@ import { DonateComponent } from './donate/donate.component';
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
+    FormsModule
   ],
   providers: [ApiService],
   bootstrap: [AppComponent]

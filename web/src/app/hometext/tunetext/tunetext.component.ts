@@ -14,6 +14,9 @@ export class TunetextComponent implements OnInit {
     private playResolver: PlayresolverService,
     private router: Router) { }
 
+  usertext: any ={};
+  text = '';
+
   ngOnInit() {
   }
 
