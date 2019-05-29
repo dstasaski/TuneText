@@ -6,12 +6,6 @@
       "image": "dstasaski/tunetext-web",
       "hostname": "web",
       "essential": false,
-      "portMappings": [
-        {
-          "hostPort": 4200,
-          "containerPort": 4200
-        }
-      ],
       "memory": 128
     },
     {
@@ -19,12 +13,6 @@
       "image": "dstasaski/tunetext-api",
       "hostname": "api",
       "essential": false,
-      "portMappings": [
-        {
-          "hostPort": 5000,
-          "containerPort": 5000
-        }
-      ],
       "memory": 128
     },
     {
