@@ -2,6 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpClientModule } from '@angular/common/http';
 import { Routes, RouterModule } from '@angular/router';
 import { TunetextComponent } from './tunetext.component';
+import { FormsModule } from '@angular/forms';
 
 describe('TunetextComponent', () => {
   let component: TunetextComponent;
@@ -10,7 +11,11 @@ describe('TunetextComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ TunetextComponent ],
-      imports: [HttpClientModule, RouterModule.forRoot([])]
+      imports: [
+        HttpClientModule, 
+        FormsModule,
+        RouterModule.forRoot([])
+      ]
     })
     .compileComponents();
   }));

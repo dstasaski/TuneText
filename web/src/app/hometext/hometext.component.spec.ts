@@ -4,6 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { HometextComponent } from './hometext.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { TunetextComponent } from './tunetext/tunetext.component';
+import { FormsModule } from '@angular/forms';
 
 describe('HometextComponent', () => {
   let component: HometextComponent;
@@ -13,7 +14,8 @@ describe('HometextComponent', () => {
     TestBed.configureTestingModule({
       imports: [
         HttpClientModule,
-        RouterTestingModule
+        RouterTestingModule,
+        FormsModule
       ],
       declarations: [ 
         HometextComponent,
