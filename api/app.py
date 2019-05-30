@@ -33,7 +33,7 @@ def song(songID):
     if song is not None:
         return analyzer.song(songID)
     else:
-        return jsonify({'error': 'bad song path'})
+        return jsonify({'error': 'bad song path'}), 400
 
 
 @app.route('/api/music/smartsong/<text>')

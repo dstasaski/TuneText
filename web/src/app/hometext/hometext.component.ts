@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./hometext.component.css']
 })
 export class HometextComponent implements OnInit {
-  title = 'Tune your Text!';
+  title = 'Tune my Text!';
   constructor() { }
 
   ngOnInit() {
