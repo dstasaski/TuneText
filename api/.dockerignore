@@ -2,3 +2,5 @@
 __pycache__
 .git
 cloud-secret.json
+assets/songs/untrimmed
+assets/songs/trimmed

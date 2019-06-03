@@ -1,10 +1,9 @@
 empty
 sadness
-hate
-anger
-neutral
 boredom
 worry
+hate
+anger
 fun
 love
 enthusiasm

@@ -19,7 +19,7 @@ stop_words = set(stopwords.words('english'))
 training_docs = []
 
 
-with open('datasets/twitter_emotion_labeled.csv', newline='', encoding='ascii', errors='ignore') as csvfile:
+with open('datasets/twitter_emotion_no_neutral.csv', newline='', encoding='ascii', errors='ignore') as csvfile:
     reader = csv.reader(csvfile)
     for row in reader:
         sentiment = row[0]
@@ -38,6 +38,6 @@ trainer = NaiveBayesClassifier.train
 
 classifier = sentim_analyzer.train(trainer, training_set)
 
-save_classifier = open("../api/models/naivebayes.pickle", "wb")
+save_classifier = open("../api/models/naivebayes_no_neutral.pickle", "wb")
 pickle.dump(sentim_analyzer, save_classifier)
 save_classifier.close()
