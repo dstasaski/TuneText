@@ -1,6 +1,7 @@
 from flask import Flask
 from flask import jsonify
 from flask_cors import CORS
+from flask import request
 from googlecloud import GoogleAPI
 from analyze import Analyzer
 from gevent.pywsgi import WSGIServer
@@ -15,8 +16,9 @@ analyzer = Analyzer()
 TEXT_LIMIT = 1000
 
 
-@app.route('/api/text_to_speech/<text>')
-def speech_mp3(text):
+@app.route('/api/text_to_speech')
+def speech_mp3():
+    text = request.args.get('text')
     if len(text) <= 0:
         error = {'errorMessage': 'There is no text'}
         return jsonify(error), 400
@@ -36,8 +38,9 @@ def song(song_id):
         return jsonify({'error': 'bad song path'}), 400
 
 
-@app.route('/api/music/smartsong/<text>')
-def smart_song(text):
+@app.route('/api/music/smartsong')
+def smart_song():
+    text = request.args.get('text')
     if len(text) <= 0:
         error = {'errorMessage': 'There is no text'}
         return jsonify(error), 400

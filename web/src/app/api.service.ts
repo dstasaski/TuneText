@@ -11,9 +11,9 @@ import { TextSong } from 'src/models/textsong';
   providedIn: 'root'
 })
 export class ApiService {
-  textSpeechUrl = '/api/text_to_speech/';
+  textSpeechUrl = '/api/text_to_speech?text=';
   songUrl = '/api/music/song/';
-  textSongUrl = '/api/music/smartsong/';
+  textSongUrl = '/api/music/smartsong?text=';
   
   constructor(private http: HttpClient) { }
 
@@ -22,14 +22,14 @@ export class ApiService {
   }
 
   getTextMP3(text:string):Observable<Base64MP3> {
-    return this.http.get<Base64MP3>(this.textSpeechUrl + text);
+    return this.http.get<Base64MP3>(this.textSpeechUrl + encodeURIComponent(text));
   }
 
   getSongEncoding():Observable<SongEncoding> {
-    return this.http.get<SongEncoding>(this.songUrl)
+    return this.http.get<SongEncoding>(this.songUrl);
   }
 
   getTextSong(text:string):Observable<TextSong> {
-    return this.http.get<TextSong>(this.textSongUrl + text);
+    return this.http.get<TextSong>(this.textSongUrl + encodeURIComponent(text));
   }
 }
