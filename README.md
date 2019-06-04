@@ -8,7 +8,7 @@ Welcome to Tune My Text!  Tune My Text is an interactive website created to pair
 * Website API -- Python (Flask)
 * Text Classifier -- Custom NLTK Model
 * Song Classifier -- Open source model (see below)
-* CI / CD Pipeline -- Travis-CI
+* Pipeline -- Travis-CI
 * Deployment -- Multi-Docker Container hosted on AWS
 
 ## Local Setup
