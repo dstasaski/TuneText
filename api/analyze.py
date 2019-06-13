@@ -4,7 +4,7 @@ from nltk.corpus import stopwords
 from nltk.sentiment.util import *
 from os import listdir
 from os.path import isfile, join
-from random import randint
+import random
 
 
 class Analyzer:
@@ -53,6 +53,10 @@ class Analyzer:
                     angry.append(song)
         return happy, sad, angry
 
+    @staticmethod
+    def hash_text(text):
+        return abs(hash(text)) % (10 ** 8)
+
     def song(self, song_id):
         if song_id in self.song_names:
             return send_file('assets/songs/trimmed/' + song_id, mimetype='audio/mpeg')
@@ -61,20 +65,21 @@ class Analyzer:
 
     def smart_song(self, text):
         sentiment = self.find_sentiment(text)
-        song_id = self.choose_song(sentiment)
+        song_id = self.choose_song(sentiment, self.hash_text(text))
         response = {
             'sentiment': sentiment,
             'songID': song_id
         }
         return response
 
-    def choose_song(self, sentiment):
+    def choose_song(self, sentiment, text_seed):
+        random.seed(text_seed)
         if sentiment in self.happy:
-            return self.happy_songs[randint(0, len(self.happy_songs) - 1)]
+            return self.happy_songs[random.randint(0, len(self.happy_songs) - 1)]
         elif sentiment in self.sad:
-            return self.sad_songs[randint(0, len(self.sad_songs) - 1)]
+            return self.sad_songs[random.randint(0, len(self.sad_songs) - 1)]
         elif sentiment in self.angry:
-            return self.angry_songs[randint(0, len(self.angry_songs) - 1)]
+            return self.angry_songs[random.randint(0, len(self.angry_songs) - 1)]
         else:
             return 'Unknown_Sentiment'
 
