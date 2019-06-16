@@ -12,3 +12,4 @@ FROM nginx
 EXPOSE 4200
 COPY ./nginx/default.conf /etc/nginx/conf.d/default.conf
 COPY --from=builder /app/dist /usr/share/nginx/html
+RUN ln -s /usr/share/nginx/html /usr/share/nginx/www

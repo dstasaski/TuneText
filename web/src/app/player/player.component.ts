@@ -13,9 +13,7 @@ export class PlayerComponent implements OnInit {
   constructor(private playService:PlayService,
     private route: ActivatedRoute) { }
   
-  ngOnInit() {
-    this.route.snapshot.data.playResolver;
-  }
+  ngOnInit() {}
 
   ngOnDestroy() {
     this.playService.destroyPlayer();

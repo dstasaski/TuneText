@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ApiService } from './api.service';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -10,17 +11,23 @@ export class PlayService {
   textAudio:HTMLAudioElement;
   songAudio:HTMLAudioElement;
 
-  constructor(private apiService: ApiService) { }
+  constructor(private apiService: ApiService, private router: Router) { }
 
   savePlayer(text:string) {
-    this.apiService.getTextSong(text).subscribe(textSong => {
-      this.sentiment = textSong.sentiment;
-      this.saveSong(textSong.songID);
-    });
+    if (!text) {
+      this.router.navigate(['']);
+    } else {
 
-    this.apiService.getTextMP3(text).subscribe(base64mp3 => {
-      this.saveTextAudio(base64mp3.audioContent);
-    });
+      this.apiService.getTextSong(text).subscribe(textSong => {
+        this.sentiment = textSong.sentiment;
+        this.saveSong(textSong.songID);
+      });
+
+      this.apiService.getTextMP3(text).subscribe(base64mp3 => {
+        this.saveTextAudio(base64mp3.audioContent);
+      });
+      
+    }
   }
 
   saveSong(songID:string) {
