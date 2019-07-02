@@ -56,7 +56,7 @@ def smart_song():
 
 @app.route('/api/dao/getplayer/<player_id>')
 def get_player(player_id):
-    if player_id is not None:
+    if player_id is not None and len(player_id) > 0 and player_id.isalnum():
         return jsonify(dao.get_player(player_id))
     else:
         return jsonify({'error': 'Player ID cannot be read'}), 400
