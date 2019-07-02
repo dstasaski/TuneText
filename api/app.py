@@ -1,9 +1,11 @@
 from flask import Flask
 from flask import jsonify
+from flask import request
 from flask_cors import CORS
 from flask import request
 from googlecloud import GoogleAPI
 from analyze import Analyzer
+from dao import Dao
 from gevent.pywsgi import WSGIServer
 import os
 
@@ -12,6 +14,7 @@ CORS(app)
 
 googleAPI = GoogleAPI()
 analyzer = Analyzer()
+dao = Dao()
 
 TEXT_LIMIT = 1000
 
@@ -49,6 +52,25 @@ def smart_song():
         return jsonify(error), 400
     else:
         return jsonify(analyzer.smart_song(text))
+
+
+@app.route('/api/dao/getplayer/<player_id>')
+def get_player(player_id):
+    if player_id is not None:
+        return jsonify(dao.get_player(player_id))
+    else:
+        return jsonify({'error': 'Player ID cannot be read'}), 400
+
+
+@app.route('/api/dao/saveplayer', methods=['POST'])
+def save_player():
+    player = request.json
+    if player is not None:
+        text = player['text']
+        song_name = player['song']
+        return jsonify(dao.store_player(text, song_name))
+    else:
+        return jsonify({'error': 'bad request'}), 400
 
 
 if __name__ == '__main__':
