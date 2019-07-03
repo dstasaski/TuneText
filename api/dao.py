@@ -9,8 +9,7 @@ class Dao:
         with open("config/dao-properties.yml", 'r') as stream:
             properties = yaml.safe_load(stream)
 
-        self.dynamodb = boto3.resource(properties['type'], region_name=properties['region_name'],
-                                       endpoint_url=properties['endpoint_url'])
+        self.dynamodb = boto3.resource(service_name=properties['type'], region_name=properties['region_name'])
         self.table = self.dynamodb.Table(properties['playerTable'])
         self.id_length = 4
 
