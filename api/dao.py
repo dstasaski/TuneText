@@ -1,6 +1,7 @@
 import boto3
 import yaml
-import random, string
+import random
+import string
 from boto3.dynamodb.conditions import Key, Attr
 
 
@@ -15,7 +16,7 @@ class Dao:
 
     def store_player(self, text, song_name):
         gen_id = self.generate_id()
-        while self.id_exists(id):
+        while self.id_exists(gen_id):
             gen_id = self.generate_id()
 
         self.table.put_item(
@@ -37,7 +38,7 @@ class Dao:
         json_res = {'error': 'Key does not exist in DB'}
 
         if 'Items' in response:
-            json_res = {'text': response['text'][0], 'song_name': response['song_name'][0]}
+            json_res = {'text': response[0]['text'], 'song_name': response[0]['song_name']}
 
         return json_res
 
