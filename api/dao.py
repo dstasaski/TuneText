@@ -35,10 +35,11 @@ class Dao:
             KeyConditionExpression=Key('id').eq(player_id)
         )
 
-        json_res = {'error': 'Key does not exist in DB'}
-
-        if 'Items' in response:
-            json_res = {'text': response[0]['text'], 'song_name': response[0]['song_name']}
+        items = response['Items']
+        if items:
+            json_res = {'text': items[0]['text'], 'song_name': items[0]['song_name']}
+        else:
+            json_res = {'error': 'Key does not exist in DB'}
 
         return json_res
 
