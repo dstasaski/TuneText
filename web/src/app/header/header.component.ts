@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from '../api.service';
 
 @Component({
   selector: 'app-header',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  constructor(private apiService:ApiService) { }
 
   ngOnInit() {
+  }
+
+  async onSubmit(playerId: string) {
+    const storedPlayer = await this.getPlayer(playerId);
+    console.log(storedPlayer);
+  }
+
+  async getPlayer(playerId: string) {
+    return await this.apiService.getStoredPlayer(playerId).toPromise();
   }
 
 }

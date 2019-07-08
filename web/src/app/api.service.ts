@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { Base64MP3 } from 'src/models/mp3';
 import { SongEncoding } from 'src/models/songencoding';
 import { TextSong } from 'src/models/textsong';
-
+import { StoredPlayer } from 'src/models/storedplayer';
 
 
 @Injectable({
@@ -14,6 +14,7 @@ export class ApiService {
   textSpeechUrl = '/api/text_to_speech?text=';
   songUrl = '/api/music/song/';
   textSongUrl = '/api/music/smartsong?text=';
+  getPlayerUrl = '/api/dao/getplayer?id='
   
   constructor(private http: HttpClient) { }
 
@@ -31,5 +32,9 @@ export class ApiService {
 
   getTextSong(text:string):Observable<TextSong> {
     return this.http.get<TextSong>(this.textSongUrl + encodeURIComponent(text));
+  }
+
+  getStoredPlayer(playerId:string):Observable<StoredPlayer> {
+    return this.http.get<StoredPlayer>(this.getPlayerUrl + encodeURIComponent(playerId));
   }
 }

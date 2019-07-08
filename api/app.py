@@ -54,10 +54,11 @@ def smart_song():
         return jsonify(analyzer.smart_song(text))
 
 
-@app.route('/api/dao/getplayer/<player_id>')
-def get_player(player_id):
-    if player_id is not None and len(player_id) > 0 and player_id.isalnum():
-        return jsonify(dao.get_player(player_id))
+@app.route('/api/dao/getplayer')
+def get_player():
+    player_id = request.args.get('id')
+    if player_id is not None and 0 < len(player_id) < TEXT_LIMIT and player_id.isalnum():
+        return jsonify(dao.get_player(player_id.strip()))
     else:
         return jsonify({'error': 'Player ID cannot be read'}), 400
 
@@ -68,7 +69,10 @@ def save_player():
     if player is not None:
         text = player['text']
         song_name = player['song']
-        return jsonify(dao.store_player(text, song_name))
+        if 0 < len(text) < TEXT_LIMIT and 0 < song_name < TEXT_LIMIT:
+            return jsonify(dao.store_player(text, song_name))
+        else:
+            return jsonify({'error': 'bad request'}), 400
     else:
         return jsonify({'error': 'bad request'}), 400
 
