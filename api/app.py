@@ -69,7 +69,7 @@ def save_player():
     if player is not None:
         text = player['text']
         song_name = player['song']
-        if 0 < len(text) < TEXT_LIMIT and 0 < song_name < TEXT_LIMIT:
+        if 0 < len(text) < TEXT_LIMIT and 0 < len(song_name) < TEXT_LIMIT:
             return jsonify(dao.store_player(text, song_name))
         else:
             return jsonify({'error': 'bad request'}), 400

@@ -15,7 +15,9 @@ export class HeaderComponent implements OnInit {
 
   async onSubmit(playerId: string) {
     const storedPlayer = await this.getPlayer(playerId);
-    console.log(storedPlayer);
+    console.log(storedPlayer.error);
+    console.log(storedPlayer.song_name);
+    console.log(storedPlayer.text);
   }
 
   async getPlayer(playerId: string) {
