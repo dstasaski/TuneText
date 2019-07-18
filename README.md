@@ -5,11 +5,11 @@ Welcome to Tune My Text!  Tune My Text is an interactive website created to pair
 
 ## About
 * Website Client -- Angular 7
-* Website API -- Python (Flask)
+* Website API -- Python on Flask server
 * Text Classifier -- Custom NLTK Model
 * Song Classifier -- Open source model (see below)
 * Pipeline -- Travis-CI
-* Deployment -- Multi-Docker Container hosted on AWS
+* Deployment -- AWS on Elastic Container Service
 
 ## Local Setup
 This website makes use of Google Cloud's text-to-speech API.  To connect, put your Google Cloud account's API key into a file `api.env` at the project root directory.
