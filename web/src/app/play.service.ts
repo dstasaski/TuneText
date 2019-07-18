@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 export class PlayService {
   sentiment = '';
   songID = '';
+  text = '';
   textAudio:HTMLAudioElement;
   songAudio:HTMLAudioElement;
 
@@ -17,7 +18,7 @@ export class PlayService {
     if (!text) {
       this.router.navigate(['']);
     } else {
-
+      this.text = text;
       this.apiService.getTextSong(text).subscribe(textSong => {
         this.sentiment = textSong.sentiment;
         this.saveSong(textSong.songID);

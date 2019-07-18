@@ -5,6 +5,7 @@ import { Base64MP3 } from 'src/models/mp3';
 import { SongEncoding } from 'src/models/songencoding';
 import { TextSong } from 'src/models/textsong';
 import { StoredPlayer } from 'src/models/storedplayer';
+import { SavePlayerResponse } from 'src/models/saveplayerresponse';
 
 
 @Injectable({
@@ -14,7 +15,8 @@ export class ApiService {
   textSpeechUrl = '/api/text_to_speech?text=';
   songUrl = '/api/music/song/';
   textSongUrl = '/api/music/smartsong?text=';
-  getPlayerUrl = '/api/dao/getplayer?id='
+  getPlayerUrl = '/api/dao/getplayer?id=';
+  storePlayerUrl = '/api/dao/saveplayer'
   
   constructor(private http: HttpClient) { }
 
@@ -36,5 +38,14 @@ export class ApiService {
 
   getStoredPlayer(playerId:string):Observable<StoredPlayer> {
     return this.http.get<StoredPlayer>(this.getPlayerUrl + encodeURIComponent(playerId));
+  }
+
+  storePlayer(player:StoredPlayer):Observable<SavePlayerResponse> {
+    return this.http.post<SavePlayerResponse>(this.storePlayerUrl, 
+      {
+        'text': player.text,
+        'song_name': player.song_name,
+        'emotion': player.emotion
+      });
   }
 }

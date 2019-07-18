@@ -18,6 +18,7 @@ export class HeaderComponent implements OnInit {
     console.log(storedPlayer.error);
     console.log(storedPlayer.song_name);
     console.log(storedPlayer.text);
+    console.log(storedPlayer.emotion);
   }
 
   async getPlayer(playerId: string) {

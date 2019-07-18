@@ -8,8 +8,14 @@
       <h5>{{ playService?.sentiment }}</h5>
     </div>
     <div>
-      <button (click)="pressButton()" class="btn btn-success btn-lg">{{ buttonText }}</button>
+      <button (click)="pressButton()" class="btn btn-success btn-lg m-1">{{ buttonText }}</button>
     </div>
+    <div *ngIf="!saved; else savedBlock"> 
+      <button (click)="savePlayer()" class="btn btn-secondary btn-sm m-1">{{ savePlayerText }}</button>
+    </div>
+    <ng-template #savedBlock>
+      <p>Your Tune has been saved! Your ID is {{ savedID }}</p>
+    </ng-template>
   </ng-template>
   <ng-template #elseBlock>
     <h3>Loading...</h3>
