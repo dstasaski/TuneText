@@ -14,16 +14,17 @@ class Dao:
         self.table = self.dynamodb.Table(properties['playerTable'])
         self.id_length = 4
 
-    def store_player(self, text, song_name):
-        gen_id = self.generate_id()
+    def store_player(self, text, song_name, emotion):
+        gen_id = self.generate_id(text)
         while self.id_exists(gen_id):
-            gen_id = self.generate_id()
+            gen_id = self.generate_id(text)
 
         self.table.put_item(
             Item={
                 'id': gen_id,
                 'text': text,
-                'song_name': song_name
+                'song_name': song_name,
+                'emotion': emotion
             }
         )
         response = {'id': gen_id}
@@ -37,7 +38,7 @@ class Dao:
 
         items = response['Items']
         if items:
-            json_res = {'text': items[0]['text'], 'song_name': items[0]['song_name']}
+            json_res = {'text': items[0]['text'], 'song_name': items[0]['song_name'], 'emotion': items[0]['emotion']}
         else:
             json_res = {'error': 'Key does not exist in DB'}
 
@@ -47,5 +48,6 @@ class Dao:
         db_res = self.get_player(generated_id)
         return 'error' not in db_res
 
-    def generate_id(self):
+    def generate_id(self, text):
+        random.seed(text)
         return ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(self.id_length))
