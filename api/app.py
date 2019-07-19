@@ -68,7 +68,7 @@ def save_player():
     player = request.json
     if player is not None:
         text = player['text']
-        song_name = player['song']
+        song_name = player['song_name']
         emotion = player['emotion']
         if 0 < len(text) < TEXT_LIMIT and song_name in analyzer.song_names and emotion in analyzer.emotions:
             return jsonify(dao.store_player(text, song_name, emotion))
