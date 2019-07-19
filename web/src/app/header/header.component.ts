@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../api.service';
-import { StoredPlayer } from 'src/models/storedplayer';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-header',
@@ -10,22 +11,13 @@ import { StoredPlayer } from 'src/models/storedplayer';
 export class HeaderComponent implements OnInit {
   text = '';
 
-  constructor(private apiService:ApiService) { }
+  constructor(private apiService:ApiService,
+    private router: Router) { }
 
   ngOnInit() {
   }
 
-  async onSubmit(playerId: string) {
-    console.log("value: " + playerId)
-    const storedPlayer: StoredPlayer = await this.getPlayer(playerId);
-    console.log(storedPlayer.error);
-    console.log(storedPlayer.song_name);
-    console.log(storedPlayer.text);
-    console.log(storedPlayer.emotion);
+  onSubmit(playerId: string) {
+    this.router.navigate(['/player'], { queryParams: { id: playerId } });
   }
-
-  async getPlayer(playerId: string) {
-    return await this.apiService.getStoredPlayer(playerId).toPromise();
-  }
-
 }

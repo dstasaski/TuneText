@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ApiService } from './api.service';
 import { Router } from '@angular/router';
+import { StoredPlayer } from 'src/models/storedplayer';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +14,16 @@ export class PlayService {
   songAudio:HTMLAudioElement;
 
   constructor(private apiService: ApiService, private router: Router) { }
+
+  async getPlayer(id:string) {
+    const storedPlayer: StoredPlayer = await this.apiService.getStoredPlayer(id).toPromise();
+    console.log(storedPlayer.error);
+    console.log(storedPlayer.song_name);
+    console.log(storedPlayer.text);
+    console.log(storedPlayer.emotion);
+
+
+  }
 
   savePlayer(text:string) {
     if (!text) {

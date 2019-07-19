@@ -14,12 +14,14 @@ export class PlayerComponent implements OnInit {
   savePlayerText = 'Save Your Tune?'
   saved = false
   savedID = ''
+  id = ''
 
   constructor(private playService:PlayService,
     private route: ActivatedRoute,
     private apiService: ApiService) { }
   
-  ngOnInit() {}
+  ngOnInit() {
+  }
 
   ngOnDestroy() {
     this.playService.destroyPlayer();
