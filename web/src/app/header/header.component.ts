@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../api.service';
+import { StoredPlayer } from 'src/models/storedplayer';
 
 @Component({
   selector: 'app-header',
@@ -7,6 +8,7 @@ import { ApiService } from '../api.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  text = '';
 
   constructor(private apiService:ApiService) { }
 
@@ -14,7 +16,8 @@ export class HeaderComponent implements OnInit {
   }
 
   async onSubmit(playerId: string) {
-    const storedPlayer = await this.getPlayer(playerId);
+    console.log("value: " + playerId)
+    const storedPlayer: StoredPlayer = await this.getPlayer(playerId);
     console.log(storedPlayer.error);
     console.log(storedPlayer.song_name);
     console.log(storedPlayer.text);
