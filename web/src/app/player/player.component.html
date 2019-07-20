@@ -14,12 +14,25 @@
       <button (click)="savePlayer()" class="btn btn-secondary btn-sm m-1">{{ savePlayerText }}</button>
     </div>
     <ng-template #savedBlock>
-      <p>Your Tune has been saved! Your ID is {{ savedID }}</p>
+        <div *ngIf="savedID != 0; else loadingBlock"> 
+          <p>Your Tune has been saved! Your ID is {{ savedID }}</p>
+        </div>
+        <ng-template #loadingBlock>
+          <p>Loading...</p>
+        </ng-template>
     </ng-template>
   </ng-template>
   <ng-template #elseBlock>
       <div *ngIf="playService?.stored; else notStored">
-        <p>testing</p>
+          <div *ngIf="!playService?.error; else error">
+            <p>Saved Tune</p>
+          </div>
+          <ng-template #error>
+            <h5 class="error">Error: Tune not found!</h5>
+            <div>
+              <p>Try making your own Tune <a routerLink="">here</a>!</p>
+            </div>
+          </ng-template>
       </div>
       <ng-template #notStored>
         <h3>Loading...</h3>
