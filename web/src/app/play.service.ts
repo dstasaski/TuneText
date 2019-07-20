@@ -13,16 +13,26 @@ export class PlayService {
   textAudio:HTMLAudioElement;
   songAudio:HTMLAudioElement;
 
+  stored = false
+  error = false
+  storedSong = ''
+  storedText = ''
+  storedEmotion = ''
+
   constructor(private apiService: ApiService, private router: Router) { }
 
   async getPlayer(id:string) {
     const storedPlayer: StoredPlayer = await this.apiService.getStoredPlayer(id).toPromise();
-    console.log(storedPlayer.error);
-    console.log(storedPlayer.song_name);
-    console.log(storedPlayer.text);
-    console.log(storedPlayer.emotion);
-
-
+    this.destroyPlayer()
+    if (storedPlayer.error) {
+      this.error = true
+    } else {
+      this.error = false
+      this.storedSong = storedPlayer.song_name
+      this.storedEmotion = storedPlayer.emotion
+      this.storedText = storedPlayer.text
+    }
+    this.stored = true
   }
 
   savePlayer(text:string) {
@@ -69,10 +79,16 @@ export class PlayService {
   }
 
   destroyPlayer() {
+    console.log('destory called')
     this.pauseBoth();
     this.sentiment = '';
     this.songID = '';
     this.textAudio = null;
     this.songAudio = null;
+    this.stored = false
+    this.error = false
+    this.storedSong = ''
+    this.storedText = ''
+    this.storedEmotion = ''
   }
 }

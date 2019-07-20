@@ -21,6 +21,12 @@ export class PlayerComponent implements OnInit {
     private apiService: ApiService) { }
   
   ngOnInit() {
+    this.route.queryParams.subscribe(params => {
+      const id = params['id']
+      if (id) {
+        return this.playService.getPlayer(id)
+      } 
+    });
   }
 
   ngOnDestroy() {

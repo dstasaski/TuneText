@@ -18,7 +18,12 @@
     </ng-template>
   </ng-template>
   <ng-template #elseBlock>
-    <h3>Loading...</h3>
+      <div *ngIf="playService?.stored; else notStored">
+        <p>testing</p>
+      </div>
+      <ng-template #notStored>
+        <h3>Loading...</h3>
+      </ng-template>
   </ng-template>
 </div>
 
