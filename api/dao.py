@@ -2,6 +2,7 @@ import boto3
 import yaml
 import random
 import string
+import datetime
 from boto3.dynamodb.conditions import Key, Attr
 
 
@@ -24,7 +25,8 @@ class Dao:
                 'id': gen_id,
                 'text': text,
                 'song_name': song_name,
-                'emotion': emotion
+                'emotion': emotion,
+                'creation_time': datetime.datetime.now()
             }
         )
         response = {'id': gen_id}
@@ -38,7 +40,8 @@ class Dao:
 
         items = response['Items']
         if items:
-            json_res = {'text': items[0]['text'], 'song_name': items[0]['song_name'], 'emotion': items[0]['emotion']}
+            json_res = {'text': items[0]['text'], 'song_name': items[0]['song_name'],
+                        'emotion': items[0]['emotion'], 'creation_time': items[0]['creation_time']}
         else:
             json_res = {'error': 'Key does not exist in DB'}
 

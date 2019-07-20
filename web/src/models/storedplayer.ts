@@ -3,4 +3,5 @@ export class StoredPlayer {
     text: string;
     error: string;
     emotion: string;
+    creation_time: string;
 }

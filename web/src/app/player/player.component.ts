@@ -49,7 +49,8 @@ export class PlayerComponent implements OnInit {
       song_name: this.playService.songID,
       emotion: this.playService.sentiment,
       text: this.playService.text,
-      error: ''
+      error: '',
+      creation_time: ''
     };
     this.apiService.storePlayer(player).subscribe(res => {
       this.savedID = res.id
