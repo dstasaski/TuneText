@@ -1,5 +1,5 @@
 <div class="text-center mx-auto w-50 m-3">
-  <div *ngIf="playService?.sentiment != 0; then thenBlock else elseBlock"></div>
+  <div *ngIf="!playService?.playerInvoked && playService?.sentiment != 0 && !playService?.stored; then thenBlock else elseBlock"></div>
   <ng-template #thenBlock>
     <div>
       <p>Your text has been classified as:<p>
@@ -13,6 +13,10 @@
     <div *ngIf="!saved; else savedBlock"> 
       <button (click)="savePlayer()" class="btn btn-secondary btn-sm m-1">{{ savePlayerText }}</button>
     </div>
+    <br>
+    <div>
+      <p>Want to make another Tune? <a routerLink="">Click Here</a>!</p>
+    </div>
     <ng-template #savedBlock>
         <div *ngIf="savedID != 0; else loadingBlock"> 
           <p>Your Tune has been saved! Your code is: <b>{{ savedID }}</b></p>
@@ -25,7 +29,16 @@
   <ng-template #elseBlock>
     <div *ngIf="playService?.stored; else notStored">
         <div *ngIf="!playService?.error; else error">
-          <p>Saved Tune</p>
+          <p>Saved Tune from <em>{{ playService?.storedDatetime }}</em></p>
+          <div>
+            <p>The text has been classified as:<p>
+          </div>
+          <div>
+            <h5>{{ playService?.sentiment }}</h5>
+          </div>
+          <div>
+            <button (click)="pressButton()" class="btn btn-success btn-lg m-1">{{ buttonText }}</button>
+          </div>
         </div>
         <ng-template #error>
           <h5 class="error">Error: Tune not found!</h5>

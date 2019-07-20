@@ -14,9 +14,7 @@ export class PlayresolverService implements Resolve<any>{
 
   resolve(route: ActivatedRouteSnapshot) {
     const id = route.queryParams['id']
-    if (id) {
-      return this.playService.getPlayer(id)
-    } else {
+    if (!id) {
       return this.playService.savePlayer(this.text);
     }
   }

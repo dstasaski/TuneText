@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { ApiService } from './api.service';
 import { Router } from '@angular/router';
 import { StoredPlayer } from 'src/models/storedplayer';
+import { Base64MP3 } from 'src/models/mp3';
 
 @Injectable({
   providedIn: 'root'
@@ -14,25 +15,34 @@ export class PlayService {
   songAudio:HTMLAudioElement;
 
   stored = false
+  storedDatetime = '';
   error = false
-  storedSong = ''
-  storedText = ''
-  storedEmotion = ''
+  playerInvoked = false
 
   constructor(private apiService: ApiService, private router: Router) { }
 
   async getPlayer(id:string) {
+    this.playerInvoked = true
     const storedPlayer: StoredPlayer = await this.apiService.getStoredPlayer(id).toPromise();
     this.destroyPlayer()
     if (storedPlayer.error) {
       this.error = true
     } else {
       this.error = false
-      this.storedSong = storedPlayer.song_name
-      this.storedEmotion = storedPlayer.emotion
-      this.storedText = storedPlayer.text
+      this.songID = storedPlayer.song_name
+      this.sentiment = storedPlayer.emotion
+      this.text = storedPlayer.text
+      this.storedDatetime = storedPlayer.creation_time
+
+
+      const [base64mp3, r2] = await Promise.all([
+        this.apiService.getTextMP3(this.text).toPromise(),
+        this.saveSong(this.songID)
+      ])
+      this.saveTextAudio(base64mp3.audioContent);
     }
     this.stored = true
+    this.playerInvoked = false
   }
 
   savePlayer(text:string) {
@@ -79,7 +89,6 @@ export class PlayService {
   }
 
   destroyPlayer() {
-    console.log('destory called')
     this.pauseBoth();
     this.sentiment = '';
     this.songID = '';
@@ -87,8 +96,6 @@ export class PlayService {
     this.songAudio = null;
     this.stored = false
     this.error = false
-    this.storedSong = ''
-    this.storedText = ''
-    this.storedEmotion = ''
+    this.storedDatetime = '';
   }
 }
