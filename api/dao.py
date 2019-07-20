@@ -20,13 +20,14 @@ class Dao:
         while self.id_exists(gen_id):
             gen_id = self.generate_id(text)
 
+        now = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         self.table.put_item(
             Item={
                 'id': gen_id,
                 'text': text,
                 'song_name': song_name,
                 'emotion': emotion,
-                'creation_time': datetime.datetime.now()
+                'creation_time': now
             }
         )
         response = {'id': gen_id}
