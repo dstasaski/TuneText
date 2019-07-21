@@ -1,4 +1,4 @@
-export class SavePlayerResponse {
+export interface SavePlayerResponse {
     id: string;
     error: string;
 }

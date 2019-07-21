@@ -1,4 +1,4 @@
-export class TextSong {
+export interface TextSong {
     sentiment: string;
     songID: string;
 }

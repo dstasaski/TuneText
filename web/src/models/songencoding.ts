@@ -1,3 +1,3 @@
-export class SongEncoding {
+export interface SongEncoding {
     song: string;
 }
