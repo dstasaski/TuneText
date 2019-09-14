@@ -13,7 +13,7 @@
       "image": "dstasaski/tunetext-api",
       "hostname": "api",
       "essential": false,
-      "memory": 512
+      "memory": 128
     },
     {
       "name": "nginx",
