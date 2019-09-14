@@ -16,6 +16,7 @@ class Analyzer:
         self.emotions = self.all_emotions()
         self.happy, self.sad, self.angry = self.classified_emotions()
         self.happy_songs, self.sad_songs, self.angry_songs = self.song_emotions()
+        self.song_names = self.happy_songs + self.sad_songs + self.angry_songs
 
 
     @staticmethod
