@@ -32,15 +32,6 @@ def speech_mp3():
         return jsonify(googleAPI.text_to_speech(text))
 
 
-@app.route('/api/music/song/<song_id>')
-def song(song_id):
-    song = analyzer.song(song_id)
-    if song is not None:
-        return analyzer.song(song_id)
-    else:
-        return jsonify({'error': 'bad song path'}), 400
-
-
 @app.route('/api/music/smartsong')
 def smart_song():
     text = request.args.get('text')

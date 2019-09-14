@@ -1,9 +1,6 @@
-from flask import send_file
 from nltk.stem import PorterStemmer
 from nltk.corpus import stopwords
 from nltk.sentiment.util import *
-from os import listdir
-from os.path import isfile, join
 import random
 
 
@@ -20,7 +17,6 @@ class Analyzer:
         self.happy, self.sad, self.angry = self.classified_emotions()
         self.happy_songs, self.sad_songs, self.angry_songs = self.song_emotions()
 
-        self.song_names = [f for f in listdir('assets/songs/trimmed') if isfile(join('assets/songs/trimmed', f))]
 
     @staticmethod
     def all_emotions():
@@ -56,12 +52,6 @@ class Analyzer:
     @staticmethod
     def hash_text(text):
         return abs(hash(text)) % (10 ** 8)
-
-    def song(self, song_id):
-        if song_id in self.song_names:
-            return send_file('assets/songs/trimmed/' + song_id, mimetype='audio/mpeg')
-        else:
-            return None
 
     def smart_song(self, text):
         sentiment = self.find_sentiment(text)
