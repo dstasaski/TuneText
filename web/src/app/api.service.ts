@@ -13,7 +13,7 @@ import { SavePlayerResponse } from 'src/models/saveplayerresponse';
 })
 export class ApiService {
   textSpeechUrl = '/api/text_to_speech?text=';
-  songUrl = '/api/music/song/';
+  songUrl = '/songs/';
   textSongUrl = '/api/music/smartsong?text=';
   getPlayerUrl = '/api/dao/getplayer?id=';
   storePlayerUrl = '/api/dao/saveplayer'
