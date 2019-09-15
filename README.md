@@ -3,6 +3,8 @@
 # Tune My Text!
 Welcome to Tune My Text!  Tune My Text is an interactive website created to pair a song with a user's provided text.  Using machine learning models, text can be intelligently classified into an emotion.  The text will then be paired with a fitting song!
 
+![Architecture](web/assets/screenshots/Architecture%20Diagram.png?raw=true)
+
 ## About
 To get started, go to https://tunemytext.com and enter some text into the input box
 
