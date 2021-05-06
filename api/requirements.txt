@@ -5,7 +5,7 @@ chardet==3.0.4
 Click==7.0
 docutils==0.14
 Flask==1.0.2
-Flask-Cors==3.0.7
+Flask-Cors==3.0.9
 gevent==1.4.0
 greenlet==0.4.15
 idna==2.8
